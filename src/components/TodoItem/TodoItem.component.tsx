@@ -6,7 +6,7 @@ import styles from "./TodoItem.module.css";
 
 export interface ITodo {
   id: string;
-  text: string;
+  title: string;
   completed: boolean;
 }
 
@@ -27,7 +27,7 @@ export const TodoItem = ({ todo }: TodoItemProps) => {
         checked={todo.completed}
         onChange={() => toggleTodo(todo.id)}
       />
-      <span className={styles.text}>{todo.text}</span>
+      <span className={styles.title}>{todo.title}</span>
       <span className={styles.remove_btn} onClick={() => removeTask(todo.id)}>
         &times;
       </span>

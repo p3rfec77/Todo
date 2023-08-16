@@ -3,7 +3,7 @@
   gap: 25px;
 }
 
-.checkbox:checked + .text {
+.checkbox:checked + .title {
   text-decoration: line-through;
 }
 
