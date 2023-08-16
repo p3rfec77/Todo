@@ -21,11 +21,11 @@ function App() {
       {error ? (
         <div>Кажется что-то пошло нет так... Ошибка: {error}</div>
       ) : (
-        <>
+        <div className={styles.wrapper}>
           <InputField />
           <TodoList />
           <FilterPanel />
-        </>
+        </div>
       )}
     </div>
   );
