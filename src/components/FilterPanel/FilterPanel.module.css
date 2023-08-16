@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  gap: 30px;
+}
+
+.button {
+  text-align: center;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  min-width: 100px;
+  background-color: rgba(237, 239, 242, 1);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.button:hover,
+.button:has(.radio:checked) {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  color: white;
+}
+
+.radio {
+  display: none;
+}

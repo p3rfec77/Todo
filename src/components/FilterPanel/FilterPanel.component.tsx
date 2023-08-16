@@ -9,10 +9,36 @@ export const FilterPanel = () => {
 
   const filter = (filter: string) => dispatch(FilterTodos(filter));
   return (
-    <div>
-      <button onClick={() => filter("all")}>All</button>
-      <button onClick={() => filter("active")}>Active</button>
-      <button onClick={() => filter("completed")}>Completed</button>
+    <div className={styles.container}>
+      <label className={styles.button}>
+        <input
+          type="radio"
+          name="filter"
+          className={styles.radio}
+          onClick={() => filter("all")}
+        />
+        all
+      </label>
+
+      <label className={styles.button}>
+        <input
+          type="radio"
+          name="filter"
+          className={styles.radio}
+          onClick={() => filter("active")}
+        />
+        active
+      </label>
+
+      <label className={styles.button}>
+        <input
+          type="radio"
+          name="filter"
+          className={styles.radio}
+          onClick={() => filter("completed")}
+        />
+        completed
+      </label>
     </div>
   );
 };
