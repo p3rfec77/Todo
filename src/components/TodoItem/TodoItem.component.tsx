@@ -1,3 +1,4 @@
+import { FcCheckmark } from "react-icons/fc";
 import { useAppDispatch } from "../../hooks/ReduxHooks";
 
 import { removeTodo, toggleTodoCompleted } from "../../store/todoSlice";
@@ -21,13 +22,27 @@ export const TodoItem = ({ todo }: TodoItemProps) => {
   const toggleTodo = (id: string) => dispatch(toggleTodoCompleted(id));
   return (
     <li className={styles.todo} key={todo.id}>
-      <input
-        className={styles.checkbox}
-        type="checkbox"
-        checked={todo.completed}
-        onChange={() => toggleTodo(todo.id)}
-      />
-      <span className={styles.title}>{todo.title}</span>
+      <div className={styles.container}>
+        <label className={styles.checkbox_container}>
+          {todo.completed && <FcCheckmark className={styles.check_mark} />}
+          <input
+            className={styles.checkbox}
+            type="checkbox"
+            checked={todo.completed}
+            onChange={() => toggleTodo(todo.id)}
+          />
+        </label>
+        <span
+          className={styles.title}
+          style={
+            todo.completed
+              ? { textDecoration: "line-through", color: "rgba(0, 0, 0, 0.5)" }
+              : {}
+          }
+        >
+          {todo.title}
+        </span>
+      </div>
       <span className={styles.remove_btn} onClick={() => removeTask(todo.id)}>
         &times;
       </span>

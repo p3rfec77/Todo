@@ -21,9 +21,19 @@ export const TodoList = () => {
   const filter = useAppSelector(selectFilter);
 
   return (
-    <ul className={styles.container}>
+    <ul
+      className={styles.container}
+      style={todos.length > 0 ? { padding: "20px" } : {}}
+    >
       {loading ? (
-        <TailSpin color="#000000" width={30} height={30} />
+        <div>
+          <TailSpin
+            wrapperClass={styles.loading}
+            color="#000000"
+            width={50}
+            height={50}
+          />
+        </div>
       ) : (
         <>
           {filter === "completed" &&
