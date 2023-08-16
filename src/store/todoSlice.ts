@@ -6,11 +6,13 @@ import { ITodo } from "../components/TodoItem/TodoItem.component";
 
 interface TodoState {
   todos: ITodo[];
+  filter: string;
   text: string;
 }
 
 const initialState: TodoState = {
   todos: [],
+  filter: "all",
   text: "",
 };
 
@@ -42,13 +44,23 @@ export const todoSlice = createSlice({
     setText: (state, action) => {
       state.text = action.payload;
     },
+
+    FilterTodos: (state, action) => {
+      state.filter = action.payload.filter;
+    },
   },
 });
 
-export const { addTodo, removeTodo, toggleTodoCompleted, setText } =
-  todoSlice.actions;
+export const {
+  addTodo,
+  removeTodo,
+  toggleTodoCompleted,
+  setText,
+  FilterTodos,
+} = todoSlice.actions;
 
 export const selectTodos = (state: RootState) => state.todo.todos;
 export const selectText = (state: RootState) => state.todo.text;
+export const selectFilter = (state: RootState) => state.todo.filter;
 
 export default todoSlice.reducer;

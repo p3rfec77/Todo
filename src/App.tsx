@@ -1,6 +1,6 @@
 import React from "react";
 
-import { InputField, TodoList } from "./components";
+import { InputField, TodoList, FilterPanel } from "./components";
 
 import styles from "./App.module.css";
 
@@ -9,6 +9,7 @@ function App() {
     <div className={styles.app}>
       <InputField />
       <TodoList />
+      <FilterPanel />
     </div>
   );
 }
