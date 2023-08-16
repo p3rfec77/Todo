@@ -25,14 +25,14 @@ export const InputField = () => {
   };
   return (
     <>
-      <label>
-        <input
-          value={text}
-          onChange={(e) => InputHandler(e)}
-          onKeyDown={(e) => addTaskByEnter(e)}
-        />
-        <button onClick={AddTask}>Add Todo</button>
-      </label>
+      <input
+        className={styles.todo_field}
+        value={text}
+        placeholder="What needs to be done?"
+        onChange={(e) => InputHandler(e)}
+        onKeyDown={(e) => addTaskByEnter(e)}
+      />
+      {/* <button onClick={AddTask}>Add Todo</button> */}
     </>
   );
 };

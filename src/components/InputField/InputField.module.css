@@ -1,0 +1,16 @@
+.todo_field {
+  border: none;
+  background-color: rgba(237, 239, 242, 1);
+  padding: 20px;
+  width: 100%;
+  border-radius: 30px;
+  font-size: 18px;
+}
+
+.todo_field::placeholder {
+  color: black;
+}
+
+.todo_field:focus {
+  outline: none;
+}
