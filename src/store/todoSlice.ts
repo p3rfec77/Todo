@@ -2,11 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import { RootState } from "./index";
 
-export interface ITodo {
-  id: string;
-  text: string;
-  completed: boolean;
-}
+import { ITodo } from "../components/TodoItem/TodoItem.component";
 
 interface TodoState {
   todos: ITodo[];
