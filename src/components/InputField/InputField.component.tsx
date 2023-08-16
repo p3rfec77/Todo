@@ -11,13 +11,13 @@ export const InputField = () => {
     dispatch(setText(e.target.value));
 
   const AddTask = () => {
-    dispatch(addTodo({ text }));
+    dispatch(addTodo(text));
     dispatch(setText(""));
   };
 
   const addTaskByEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      dispatch(addTodo({ text }));
+      dispatch(addTodo(text));
       dispatch(setText(""));
     }
   };

@@ -7,7 +7,7 @@ import styles from "./FilterPanel.module.css";
 export const FilterPanel = () => {
   const dispatch = useAppDispatch();
 
-  const filter = (filter: string) => dispatch(FilterTodos({ filter }));
+  const filter = (filter: string) => dispatch(FilterTodos(filter));
   return (
     <div>
       <button onClick={() => filter("all")}>All</button>

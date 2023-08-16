@@ -17,8 +17,8 @@ export interface TodoItemProps {
 export const TodoItem = ({ todo }: TodoItemProps) => {
   const dispatch = useAppDispatch();
 
-  const removeTask = (id: string) => dispatch(removeTodo({ id }));
-  const toggleTodo = (id: string) => dispatch(toggleTodoCompleted({ id }));
+  const removeTask = (id: string) => dispatch(removeTodo(id));
+  const toggleTodo = (id: string) => dispatch(toggleTodoCompleted(id));
   return (
     <li className={styles.todo} key={todo.id}>
       <input

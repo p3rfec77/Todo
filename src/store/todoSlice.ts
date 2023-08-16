@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { RootState } from "./index";
 
@@ -20,19 +20,19 @@ export const todoSlice = createSlice({
   name: "todo",
   initialState,
   reducers: {
-    addTodo: (state, action) => {
+    addTodo: (state, action: PayloadAction<string>) => {
       state.todos.push({
         id: new Date().toISOString(),
-        text: action.payload.text,
+        text: action.payload,
         completed: false,
       });
     },
-    removeTodo: (state, action) => {
-      state.todos = state.todos.filter((todo) => todo.id !== action.payload.id);
+    removeTodo: (state, action: PayloadAction<string>) => {
+      state.todos = state.todos.filter((todo) => todo.id !== action.payload);
     },
-    toggleTodoCompleted: (state, action) => {
+    toggleTodoCompleted: (state, action: PayloadAction<string>) => {
       const toggledTodo = state.todos.find(
-        (todo) => todo.id === action.payload.id
+        (todo) => todo.id === action.payload
       );
       if (!toggledTodo) {
         return;
@@ -41,12 +41,12 @@ export const todoSlice = createSlice({
       toggledTodo.completed = !toggledTodo.completed;
     },
 
-    setText: (state, action) => {
+    setText: (state, action: PayloadAction<string>) => {
       state.text = action.payload;
     },
 
-    FilterTodos: (state, action) => {
-      state.filter = action.payload.filter;
+    FilterTodos: (state, action: PayloadAction<string>) => {
+      state.filter = action.payload;
     },
   },
 });
