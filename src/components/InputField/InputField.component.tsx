@@ -10,13 +10,6 @@ export const InputField = () => {
   const InputHandler = (e: React.ChangeEvent<HTMLInputElement>) =>
     dispatch(setText(e.target.value));
 
-  const AddTask = () => {
-    if (text !== "") {
-      dispatch(addTodo(text));
-      dispatch(setText(""));
-    }
-  };
-
   const addTaskByEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       dispatch(addTodo(text));
@@ -32,7 +25,6 @@ export const InputField = () => {
         onChange={(e) => InputHandler(e)}
         onKeyDown={(e) => addTaskByEnter(e)}
       />
-      {/* <button onClick={AddTask}>Add Todo</button> */}
     </>
   );
 };
