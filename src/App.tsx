@@ -1,20 +1,19 @@
 import React, { useEffect } from "react";
+import { observer } from "mobx-react-lite";
 
-import { useAppDispatch, useAppSelector } from "./hooks/ReduxHooks";
-import { fetchTodos, selectError } from "./store/todoSlice";
+import todoStore from "./stores/todoSlice";
 
 import { InputField, TodoList, FilterPanel } from "./components";
 
 import styles from "./App.module.css";
 
-function App() {
-  const dispatch = useAppDispatch();
-  const error = useAppSelector(selectError);
+const App = observer(() => {
+  const error = todoStore.error;
 
   useEffect(() => {
-    const GetTodos = () => dispatch(fetchTodos());
+    const GetTodos = () => todoStore.fetchTodos();
     GetTodos();
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className={styles.app}>
@@ -29,6 +28,6 @@ function App() {
       )}
     </div>
   );
-}
+});
 
 export default App;

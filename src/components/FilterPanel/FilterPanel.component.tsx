@@ -1,13 +1,9 @@
-import { useAppDispatch } from "../../hooks/ReduxHooks";
-
-import { FilterTodos } from "../../store/todoSlice";
+import { observer } from "mobx-react-lite";
+import todoStore from "../../stores/todoSlice";
 
 import styles from "./FilterPanel.module.css";
 
-export const FilterPanel = () => {
-  const dispatch = useAppDispatch();
-
-  const filter = (filter: string) => dispatch(FilterTodos(filter));
+export const FilterPanel = observer(() => {
   return (
     <div className={styles.container}>
       <label className={styles.button}>
@@ -15,7 +11,7 @@ export const FilterPanel = () => {
           type="radio"
           name="filter"
           className={styles.radio}
-          onClick={() => filter("all")}
+          onClick={() => todoStore.FilterTodos("all")}
         />
         all
       </label>
@@ -25,7 +21,7 @@ export const FilterPanel = () => {
           type="radio"
           name="filter"
           className={styles.radio}
-          onClick={() => filter("active")}
+          onClick={() => todoStore.FilterTodos("active")}
         />
         active
       </label>
@@ -35,10 +31,10 @@ export const FilterPanel = () => {
           type="radio"
           name="filter"
           className={styles.radio}
-          onClick={() => filter("completed")}
+          onClick={() => todoStore.FilterTodos("completed")}
         />
         completed
       </label>
     </div>
   );
-};
+});

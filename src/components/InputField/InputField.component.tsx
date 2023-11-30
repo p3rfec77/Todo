@@ -1,30 +1,24 @@
-import { useAppSelector, useAppDispatch } from "../../hooks/ReduxHooks";
-import { setText, selectText, addTodo } from "../../store/todoSlice";
+import { observer } from "mobx-react-lite";
+import todoStore from "../../stores/todoSlice";
 
 import styles from "./InputField.module.css";
 
-export const InputField = () => {
-  const text: string = useAppSelector(selectText);
-  const dispatch = useAppDispatch();
-
-  const InputHandler = (e: React.ChangeEvent<HTMLInputElement>) =>
-    dispatch(setText(e.target.value));
-
+export const InputField = observer(() => {
   const addTaskByEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      dispatch(addTodo(text));
-      dispatch(setText(""));
+      todoStore.addTodo(todoStore.text);
+      todoStore.setText("");
     }
   };
   return (
     <>
       <input
         className={styles.todo_field}
-        value={text}
+        value={todoStore.text}
         placeholder="What needs to be done?"
-        onChange={(e) => InputHandler(e)}
+        onChange={(e) => todoStore.setText(e.target.value)}
         onKeyDown={(e) => addTaskByEnter(e)}
       />
     </>
   );
-};
+});

@@ -1,24 +1,19 @@
-import { useAppSelector } from "../../hooks/ReduxHooks";
-
+import { observer } from "mobx-react-lite";
 import { TailSpin } from "react-loader-spinner";
 
-import {
-  selectTodos,
-  selectFilter,
-  selectLoading,
-} from "../../store/todoSlice";
+import todoStore from "../../stores/todoSlice";
 
 import { TodoItem, ITodo } from "../TodoItem/TodoItem.component";
 
 import styles from "./TodoList.module.css";
 
-export const TodoList = () => {
-  const todos = useAppSelector(selectTodos);
+export const TodoList = observer(() => {
+  const todos = todoStore.todos;
   const completed = todos.filter((todo) => todo.completed);
   const active = todos.filter((todo) => !todo.completed);
 
-  const loading = useAppSelector(selectLoading);
-  const filter = useAppSelector(selectFilter);
+  const loading = todoStore.loading;
+  const filter = todoStore.filter;
 
   return (
     <ul
@@ -48,4 +43,4 @@ export const TodoList = () => {
       )}
     </ul>
   );
-};
+});

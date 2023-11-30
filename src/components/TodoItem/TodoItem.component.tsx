@@ -1,7 +1,7 @@
+import { observer } from "mobx-react-lite";
 import { FcCheckmark } from "react-icons/fc";
-import { useAppDispatch } from "../../hooks/ReduxHooks";
 
-import { removeTodo, toggleTodoCompleted } from "../../store/todoSlice";
+import todoStore from "../../stores/todoSlice";
 
 import styles from "./TodoItem.module.css";
 
@@ -15,11 +15,7 @@ export interface TodoItemProps {
   todo: ITodo;
 }
 
-export const TodoItem = ({ todo }: TodoItemProps) => {
-  const dispatch = useAppDispatch();
-
-  const removeTask = (id: string) => dispatch(removeTodo(id));
-  const toggleTodo = (id: string) => dispatch(toggleTodoCompleted(id));
+export const TodoItem = observer(({ todo }: TodoItemProps) => {
   return (
     <li className={styles.todo} key={todo.id}>
       <div className={styles.container}>
@@ -29,7 +25,7 @@ export const TodoItem = ({ todo }: TodoItemProps) => {
             className={styles.checkbox}
             type="checkbox"
             checked={todo.completed}
-            onChange={() => toggleTodo(todo.id)}
+            onChange={() => todoStore.toggleTodoCompleted(todo.id)}
           />
         </label>
         <span
@@ -43,9 +39,12 @@ export const TodoItem = ({ todo }: TodoItemProps) => {
           {todo.title}
         </span>
       </div>
-      <span className={styles.remove_btn} onClick={() => removeTask(todo.id)}>
+      <span
+        className={styles.remove_btn}
+        onClick={() => todoStore.removeTodo(todo.id)}
+      >
         &times;
       </span>
     </li>
   );
-};
+});
