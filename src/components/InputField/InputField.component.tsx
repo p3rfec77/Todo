@@ -13,6 +13,7 @@ export const InputField = observer(() => {
   return (
     <>
       <input
+        type="text"
         className={styles.todo_field}
         value={todoStore.text}
         placeholder="What needs to be done?"

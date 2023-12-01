@@ -29,6 +29,7 @@ export const TodoItem = observer(({ todo }: TodoItemProps) => {
           />
         </label>
         <span
+          data-test-id="todo-item-text"
           className={styles.title}
           style={
             todo.completed
@@ -40,6 +41,7 @@ export const TodoItem = observer(({ todo }: TodoItemProps) => {
         </span>
       </div>
       <span
+        data-test-id="todo-item-remove"
         className={styles.remove_btn}
         onClick={() => todoStore.removeTodo(todo.id)}
       >
